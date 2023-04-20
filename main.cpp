@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <string.h>
 
-typedef struct {
+typedef struct {                            //Define struct student
   char type;
   char name[50];
   int age;
@@ -11,16 +11,16 @@ typedef struct {
 #define TOTAL_STUDENTS 3
 
 int main(void){
-  FILE *file;
+  FILE *file;                               //File pointer variable
 
-  file = fopen("file.csv", "w");
+  file = fopen("file.csv", "w");            //Open file.csv in write mode
 
   if (file == NULL){
     printf("Error opening file\n");
     return 1;
   }
 
-  Student students[TOTAL_STUDENTS];
+  Student students[TOTAL_STUDENTS];           //create array of structs
   students[0].type = 'U';
   strcpy(students[0].name, "Nageeb");
   students[0].age = 20;
@@ -36,7 +36,7 @@ int main(void){
   students[2].age = 21;
   students[2].average = 85;
  
-  for (int i = 0; i < TOTAL_STUDENTS; i++){
+  for (int i = 0; i < TOTAL_STUDENTS; i++){     //print array of structs to file.csv
     fprintf(file, 
             "%c, %s, %d, %.2f\n",
             students[i].type,  
